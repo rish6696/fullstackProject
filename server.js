@@ -6,11 +6,15 @@ import config from './config'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
+
+const PORT = process.env.PORT||8555;
 const app=express();
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 //app.use(cors())
 app.use(cookieParser())
+
+
  
 
 mongoose.connect(config.DB_URL)
@@ -20,4 +24,6 @@ mongoose.connect(config.DB_URL)
 
 app.use('/v1',route)
 
-app.listen(8555,x=>console.log(`server started`))
+app.use('/',express.static(__dirname+'/client/build'));
+
+app.listen(PORT,x=>console.log(`server started at port ${PORT}`))
