@@ -18,7 +18,7 @@ app.use(cookieParser())
  
 
 mongoose.connect(config.DB_URL)
-.then(x=>console.log('mongodb connected successfully'))
+.then(x=>console.log('mongodb connected successfully at url '+config.DB_URL))
 .catch(e=>console.log(e))
 
 
