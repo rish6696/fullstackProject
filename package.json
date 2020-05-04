@@ -1,0 +1,39 @@
+{
+  "name": "matrimonyserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec  babel-node  ./server.js",
+    "client": "npm start  --prefix client",
+    "dev":"concurrently \"npm run start\" \"npm run client\" "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "@hapi/joi": "^15.1.1",
+    "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
+    "body": "^5.1.0",
+    "concurrently": "^5.2.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-joi-validation": "^4.0.3",
+    "googleapis": "^49.0.0",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.10",
+    "nodemon": "^2.0.3",
+    "parser": "^0.1.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3"
+  }
+}
