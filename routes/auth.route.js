@@ -9,6 +9,9 @@ import authValidator from '../validators/auth.validator'
 
 const router=express.Router();
 
+router.route('/getUser')
+.post(authController.getUser)
+
 router.route('/loginGoogle')
 .post(validator.body(authValidator.loginGoogle),authController.loginGoogle,middleware.assignJWTMiddleware())
 

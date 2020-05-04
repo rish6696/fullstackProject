@@ -3,6 +3,7 @@ import Bcrypt from 'bcrypt'
 import config from '../config'
 import { google } from 'googleapis'
 import { oauth2 } from 'googleapis/build/src/apis/oauth2'
+import Jwt from 'jsonwebtoken' 
 import axios from 'axios'
 
 
@@ -51,7 +52,6 @@ async function loginLocal(req, res, next) {
 }
 
 async function loginGoogle(req, res, next) {
-    console.log("request recieved")
     try {
         const { code } = req.body;
         const { result, data } = await getTokenFromCode(code);
@@ -106,6 +106,25 @@ async function getTokenFromCode(code) {
 
 }
 
+async function getUser(req,res,next){
+   const { cookies } =req;
+   const { jwtToken } =cookies 
+   try {
+
+    if(jwtToken){
+        const data = Jwt.verify(jwtToken,config.JWT_KEY)
+        console.log(data)
+        res.send(data)
+    }else{
+        return res.status(400).send({status:false,data:"user is not logged in"})
+    }
+       
+   } catch (error) {
+    return res.status(200).send({status:false,data:error})
+   }
+  
+}
+
 export default {
-    SignUpHandler, loginLocal, loginGoogle
+    SignUpHandler, loginLocal, loginGoogle ,getUser
 }

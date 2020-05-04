@@ -7,6 +7,12 @@ class HomePage extends React.Component {
 
     componentDidMount=()=>{
         document.body.style.paddingTop=0;
+        axios.post('/v1/auth/getUser')
+        .then(x=>{
+            console.log(x)
+        }).catch(e=>{
+            console.log(e)
+        })
     }
 
     onClick=()=>{
