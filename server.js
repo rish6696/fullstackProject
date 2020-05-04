@@ -7,7 +7,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 
-const PORT = process.env.PORT||8555;
+const PORT = process.env.PORT||5896;
 const app=express();
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
